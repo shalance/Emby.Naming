@@ -278,7 +278,7 @@ namespace Emby.Naming.Common
             EpisodeExpressions = new[]
             {
                 // *** CUSTOM NAMING ***
-                new EpisodeExpression(@".*[\/\\](?<seriesname>[^\/\\]*)[\/\\](?:[TtSs]?(?<seasonnumber>\d{1,2})[^\d]?)?[CcEe]?(?<epnumber>\d{1,3})(?:[^\d][CcEe]?(?<endingepnumber>\d{1,3}))[^\/\\].*$")
+                new EpisodeExpression(@".*[\/\\](?<seriesname>[^\/\\]*)[\/\\](?:[TtSs]?(?<seasonnumber>\d{1,2})[^\d]?)?[CcEe]?(?<epnumber>\d{1,3})(?:[^\d][CcEe]?(?<endingepnumber>\d{1,3}))?[^\/\\].*$")
                 {
                     IsNamed = true
                 },
@@ -652,7 +652,7 @@ namespace Emby.Naming.Common
 
             MultipleEpisodeExpressions = new string[]
             {
-                @".*[\/\\](?<seriesname>[^\/\\]*)[\/\\](?:[TtSs]?(?<seasonnumber>\d{1,2})[^\d]?)?[CcEe]?(?<epnumber>\d{1,3})(?:[^\d][CcEe]?(?<endingepnumber>\d{1,3}))[^\/\\].*$",
+                @".*[\/\\](?<seriesname>[^\/\\]*)[\/\\](?:[TtSs]?(?<seasonnumber>\d{1,2})[^\d]?)?[CcEe]?(?<epnumber>\d{1,3})(?:[^\d][CcEe]?(?<endingepnumber>\d{1,3}))?[^\/\\].*$",
                 @".*(\\|\/)[sS]?(?<seasonnumber>\d{1,4})[xX](?<epnumber>\d{1,3})((-| - )\d{1,4}[eExX](?<endingepnumber>\d{1,3}))+[^\\\/]*$",
                 @".*(\\|\/)[sS]?(?<seasonnumber>\d{1,4})[xX](?<epnumber>\d{1,3})((-| - )\d{1,4}[xX][eE](?<endingepnumber>\d{1,3}))+[^\\\/]*$",
                 @".*(\\|\/)[sS]?(?<seasonnumber>\d{1,4})[xX](?<epnumber>\d{1,3})((-| - )?[xXeE](?<endingepnumber>\d{1,3}))+[^\\\/]*$",

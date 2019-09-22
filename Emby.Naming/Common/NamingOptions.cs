@@ -1,4 +1,4 @@
-﻿using Emby.Naming.Video;
+using Emby.Naming.Video;
 using System.Collections.Generic;
 using System;
 using System.Linq;
@@ -277,6 +277,12 @@ namespace Emby.Naming.Common
 
             EpisodeExpressions = new[]
             {
+                // *** CUSTOM NAMING ***
+                new EpisodeExpression(@".*[\/\\](?<seriesname>[^\/\\]*)[\/\\](?:[TtSs]?(?<seasonnumber>\d{1,2})[^\d]?)?[CcEe]?(?<epnumber>\d{1,3})(?:[^\d][CcEe]?(?<endingepnumber>\d{1,3}))[^\/\\].*$")
+                {
+                    IsNamed = true
+                },
+                
                 // *** Begin Kodi Standard Naming
                 // <!-- foo.s01.e01, foo.s01_e01, S01E02 foo, S01 - E02 -->
                 new EpisodeExpression(@".*(\\|\/)(?<seriesname>((?![Ss]([0-9]+)[][ ._-]*[Ee]([0-9]+))[^\\\/])*)?[Ss](?<seasonnumber>[0-9]+)[][ ._-]*[Ee](?<epnumber>[0-9]+)([^\\/]*)$")
@@ -646,6 +652,7 @@ namespace Emby.Naming.Common
 
             MultipleEpisodeExpressions = new string[]
             {
+                @".*[\/\\](?<seriesname>[^\/\\]*)[\/\\](?:[TtSs]?(?<seasonnumber>\d{1,2})[^\d]?)?[CcEe]?(?<epnumber>\d{1,3})(?:[^\d][CcEe]?(?<endingepnumber>\d{1,3}))[^\/\\].*$",
                 @".*(\\|\/)[sS]?(?<seasonnumber>\d{1,4})[xX](?<epnumber>\d{1,3})((-| - )\d{1,4}[eExX](?<endingepnumber>\d{1,3}))+[^\\\/]*$",
                 @".*(\\|\/)[sS]?(?<seasonnumber>\d{1,4})[xX](?<epnumber>\d{1,3})((-| - )\d{1,4}[xX][eE](?<endingepnumber>\d{1,3}))+[^\\\/]*$",
                 @".*(\\|\/)[sS]?(?<seasonnumber>\d{1,4})[xX](?<epnumber>\d{1,3})((-| - )?[xXeE](?<endingepnumber>\d{1,3}))+[^\\\/]*$",
